@@ -6,49 +6,49 @@ var treeSpecs = {
   height:  "",
   character:  ""
 }
-var stackofTree = [];
 
 
-//EVENT HANDLER//
-//
 var runTreeGrower = function() {
-//this part gets the keys from the dom. Inside the function so it will get the user's input and not a blank.
+//this part gets the keys from the dom. Entirely inside the function so it will get the user's input and not a blank.
   treeSpecs.height = parseInt(document.getElementById("treeHeight").value), 
   treeSpecs.character = document.getElementById("treeCharacter").value
 
-  console.log("making sure button works", treeSpecs.height, treeSpecs.character);
-
- //after key getting, this function runs to make sure the keys aren't blank.
   runIfPopulated();
 }
 
- //this function prevents the tree creator from running unless  both fields are populated.
+ //this function prevents the tree creator from running unless both fields are populated.
  var runIfPopulated = function() {
+  
   if (treeSpecs.height == "" || treeSpecs.character == "") {
     alert("Both fields must have a value.")
+    //add a focus thingie here?
   } else {
   
-    console.log("making sure button works INSIDE IF STATEMENT", treeSpecs.height, treeSpecs.character);
-
-    //treemaker function.
-    letsMakeSomeTrees();
-
+    letsMakeATree();
   }
 }
 
-//ok I need to make two nested for loops
-
-var letsMakeSomeTrees = function() {
+//prints the tree into the console based on the determined correct user input.
+var letsMakeATree = function() {
   
-  for (var i = 1; i < treeSpecs.height; i++) {
-    var output = [];
-    output.unshift(" ".repeat(treeSpecs.height-i)); 
+  for (var i = 1; i < treeSpecs.height + 1; i++) {
+    var output = []; //remake this variable each time you loop, otherwise you make a parabola
+    output.unshift(" ".repeat(treeSpecs.height-i)); //I'm not sure if the 'repeat' property is cheating or not.
     output.push(treeSpecs.character.repeat(i+(i-1)));
-    output = output.join("")
+    output = output.join("")//converts entire array into a string and makes the separator nothing.
     console.log(output);
   }
 }
-//still need to make the event listener that makes "enter" work. again.
+//event listener that makes "enter" work
+
+var enterKeyListener = function(event){
+  if(event.keyCode == 13) {
+  button.click();
+  }
+}
+
+document.getElementById("treeHeight").onkeydown = enterKeyListener; //name, not calling function
+document.getElementById("treeCharacter").onkeydown = enterKeyListener;
 
 //submit button listener   
 button.addEventListener("click", runTreeGrower);

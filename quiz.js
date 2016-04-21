@@ -33,9 +33,10 @@ var letsMakeATree = function() {
   
   for (var i = 1; i < treeSpecs.height + 1; i++) {
     var output = []; //remake this variable each time you loop, otherwise you make a parabola
-    output.unshift(" ".repeat(treeSpecs.height-i)); //I'm not sure if the 'repeat' property is cheating or not.
-    output.push(treeSpecs.character.repeat(i+(i-1)));
-    output = output.join("")//converts entire array into a string and makes the separator nothing.
+    //note: moved these three 'output' variable editors in a tab, but not sure if that's what needed to happen.
+      output.unshift(" ".repeat(treeSpecs.height-i)); 
+      output.push(treeSpecs.character.repeat(i+(i-1)));
+      output = output.join("")//converts entire array into a string and makes the separator nothing.
     console.log(output);
   }
 }
@@ -47,7 +48,7 @@ var enterKeyListener = function(event){
   }
 }
 
-document.getElementById("treeHeight").onkeydown = enterKeyListener; //name, not calling function
+document.getElementById("treeHeight").onkeydown = enterKeyListener; //calling function, but no () due to syntax.
 document.getElementById("treeCharacter").onkeydown = enterKeyListener;
 
 //submit button listener   

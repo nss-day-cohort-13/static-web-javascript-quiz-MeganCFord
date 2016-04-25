@@ -33,18 +33,18 @@ var letsMakeATree = function() {
   
   for (var i = 1; i < treeSpecs.height + 1; i++) {
     var output = []; //remake this variable each time you loop, otherwise you make a parabola
-    //note: moved these three 'output' variable editors in a tab, but not sure if that's what needed to happen.
-      output.unshift(" ".repeat(treeSpecs.height-i)); 
-      output.push(treeSpecs.character.repeat(i+(i-1)));
-      output = output.join("")//converts entire array into a string and makes the separator nothing.
+    output.unshift(" ".repeat(treeSpecs.height-i)); 
+    output.push(treeSpecs.character.repeat(i+(i-1)));
+    output = output.join("")//converts entire array into a string and makes the separator nothing.
     console.log(output);
   }
 }
 //event listener that makes "enter" work
 
 var enterKeyListener = function(event){
+  //indented line below per note. found it!
   if(event.keyCode == 13) {
-  button.click();
+    button.click();
   }
 }
 
